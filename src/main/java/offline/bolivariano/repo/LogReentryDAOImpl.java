@@ -8,12 +8,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
-//import org.springframework.jdbc.core.JdbcTemplate;
-//import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import com.bolivariano.frameworkseguridadtypes.LoginAplicacionIn;
 import com.bolivariano.frameworkseguridadtypes.LoginAplicacionOut;
@@ -47,7 +42,8 @@ public class LogReentryDAOImpl implements LogReentryDAO {
     
 	private Jedis jedis;
     
-    private void parameterRedis() {
+    @SuppressWarnings("unused")
+	private void parameterRedis() {
     	doLogin();
     	jedis = new Jedis(redisServer);
     	this.user=jedis.get("spring.datasource.username");

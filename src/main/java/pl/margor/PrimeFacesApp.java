@@ -3,7 +3,6 @@ package pl.margor;
 import javax.faces.webapp.FacesServlet;
 import javax.servlet.ServletContext;
 
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
