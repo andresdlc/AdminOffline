@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>pl.margor</groupId>
+	<artifactId>AdministradorOFFLINE</artifactId>
+	<version>1</version>
+
+	<packaging>war</packaging>
+
+	<name>AdministradorOFFLINE</name>
+	<description>AdministradorOFFLINE</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.2.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<commons.fileupload.version>1.3.2</commons.fileupload.version>
+		<commons.io.version>2.5</commons.io.version>
+		<primefaces.version>6.0</primefaces.version>
+		<javax.faces.version>2.2.14</javax.faces.version>
+		<javax.faces.api>2.2</javax.faces.api>
+		<tomcat.embed.jasper.version>8.5.11</tomcat.embed.jasper.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring-redis</artifactId>
+			<version>2.19.3</version>
+		</dependency>
+
+		 <dependency> <groupId>com.sybase</groupId> <artifactId>jconn4d</artifactId> 
+			<version>1</version> </dependency> 
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>javax.faces-api</artifactId>
+			<version>${javax.faces.api}</version>
+		</dependency>
+
+		 <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>${primefaces.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>${javax.faces.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.servlet.jsp.jstl</artifactId>
+			<version>3.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.io.version}</version>
+		</dependency>
+
+		<!-- <dependency> <groupId>commons-fileupload</groupId> <artifactId>commons-fileupload</artifactId> 
+			<version>${commons.fileupload.version}</version> </dependency> -->
+
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.2.11</version>
+		</dependency>
+
+
+		<!-- <dependency> <groupId>javax.xml.bind</groupId> <artifactId>jaxb-api</artifactId> 
+			<version>2.2.11</version> </dependency> <dependency> <groupId>org.springframework.boot</groupId> 
+			<artifactId>spring-boot-devtools</artifactId> </dependency> -->
+
+		<!-- <dependency> <groupId>javax.xml.bind</groupId> <artifactId>jaxb-api</artifactId> 
+			<version>2.3.0</version> </dependency> -->
+
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-devtools</artifactId> 
+			</dependency> -->
+
+		<!--adlc <dependency> <groupId>org.keycloak</groupId> <artifactId>keycloak-spring-boot-starter</artifactId> 
+			</dependency> <dependency> <groupId>org.projectlombok</groupId> <artifactId>lombok</artifactId> 
+			<optional>true</optional> </dependency> -->
+
+
+	</dependencies>
+	<!-- adlc <dependencyManagement> <dependencies> <dependency> <groupId>org.keycloak.bom</groupId> 
+		<artifactId>keycloak-adapter-bom</artifactId> <version>3.3.0.Final</version> 
+		<type>pom</type> <scope>import</scope> </dependency> </dependencies> </dependencyManagement> -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<!--solo ejecutar 1 vez para generar las clases -->
+			<!-- <plugin> <groupId>org.apache.cxf</groupId> <artifactId>cxf-codegen-plugin</artifactId> 
+				<executions> <execution> <id>generate-sources</id> <phase>generate-sources</phase> 
+				<configuration> <fork>${cxf.codegenplugin.forkmode}</fork> <additionalJvmArgs>${cxf.codegen.jvmArgs}</additionalJvmArgs> 
+				<sourceRoot>${basedir}/src/main/java</sourceRoot> <wsdlOptions> <wsdlOption> 
+				<wsdl>${basedir}/src/main/resources/ServicioSeguridadSCL.wsdl</wsdl> </wsdlOption> 
+				</wsdlOptions> </configuration> <goals> <goal>wsdl2java</goal> </goals> </execution> 
+				</executions> </plugin> -->
+
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate-sources</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<fork>${cxf.codegenplugin.forkmode}</fork>
+							<additionalJvmArgs>${cxf.codegen.jvmArgs}</additionalJvmArgs>
+							<sourceRoot>${basedir}/src/main/java/</sourceRoot>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdl>${basedir}/src/main/resources/wsframework/FrameworkSeguridadSinSeg_1.wsdl</wsdl>
+								</wsdlOption>
+							</wsdlOptions>
+						</configuration>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,9 @@
+pl\margor\springutils\Redirector.class
+offline\bolivariano\repo\LogReentry.class
+pl\margor\hello\ConsultaLogsReentryBean.class
+offline\bolivariano\repo\LogReentryDAO.class
+pl\margor\PrimeFacesApp.class
+offline\bolivariano\repo\LogReentryDAOImpl.class
+pl\margor\hello\LoginBean.class
+pl\margor\hello\SessionBean.class
+pl\margor\springutils\ViewScope.class

@@ -1,0 +1,42 @@
+server:
+  context-path: /
+  port: 9090
+  
+
+ 
+#spring.datasource:
+#  url: jdbc:sybase:Tds:127.0.0.1:2050/dummy
+#  username: dummy
+#  password: 1231 
+#  driver-class-name: com.sybase.jdbc4.jdbc.SybDriver
+  
+#spring:
+#  datasource:
+#    continue-on-error: true
+#keycloak:
+#  auth-server-url: https://10.0.2.73:8443/auth
+#  realm: BancoBolivariano
+#  resource: administrador-offline
+#  public-client: true
+#  security-constraints[0].authRoles[0]: ao-user
+#  security-constraints[0].securityCollections[0].patterns[0]: /secured/consultaLogReentry.jsf
+#  security-constraints[1].authRoles[1]: ao-admin
+#  security-constraints[1].securityCollections[1].patterns[1]: /secured/switch.jsf
+  
+#trustStore:
+#  path: cacerts
+#  password: changeit
+#idEmpresa: 2
+#idSucursal: 0
+#perfil: M
+#idOrganizacion: 434
+#idAplicacion: 140
+#usrFramework: apl_banking_ibanksrv
+
+#idAplicacion: 36
+#usrFramework: apl_vdt
+
+#redis.server: 172.16.30.143
+#redis.keyNameModoArbitro: modo
+#reentry.server: 172.16.30.143
+#reentry.port: 9001

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+	xmlns:tns="http://www.bolivariano.com/WSFrameWork/"
+	xmlns:s="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	targetNamespace="http://www.bolivariano.com/WSFrameWork/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<wsdl:types>
+		<s:schema elementFormDefault="qualified"
+			targetNamespace="http://www.bolivariano.com/WSFrameWork/">
+			<s:element name="LoginAplicacion">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1"
+							name="IdAplicacion" type="s:int" />
+						<s:element minOccurs="0" maxOccurs="1" name="UsrApl"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="LoginAplicacionResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1"
+							name="LoginAplicacionResult" type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+		</s:schema>
+	</wsdl:types>
+	<wsdl:message name="LoginAplicacionSoapIn">
+		<wsdl:part name="parameters" element="tns:LoginAplicacion" />
+	</wsdl:message>
+	<wsdl:message name="LoginAplicacionSoapOut">
+		<wsdl:part name="parameters"
+			element="tns:LoginAplicacionResponse" />
+	</wsdl:message>
+	<wsdl:portType name="ServicioSeguridadSCLSoap">
+		<wsdl:operation name="LoginAplicacion">
+			<wsdl:input message="tns:LoginAplicacionSoapIn" />
+			<wsdl:output message="tns:LoginAplicacionSoapOut" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ServicioSeguridadSCLSoap"
+		type="tns:ServicioSeguridadSCLSoap">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="LoginAplicacion">
+			<soap:operation
+				soapAction="http://www.bolivariano.com/WSFrameWork/LoginAplicacion"
+				style="document" />
+			<soap:operation
+				soapAction="http://www.bolivariano.com/WSFrameWork/LoginAplicacion" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ServicioSeguridadSCL">
+		<wsdl:port name="ServicioSeguridadSCLSoap"
+			binding="tns:ServicioSeguridadSCLSoap">
+			<soap:address
+				location="https://FRAMEWORKDES.bbframework.com/WSFrameWork/ServicioSeguridadSCL.asmx" />
+		</wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15368637246590" configfile="/jsf-spring/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="secured/index.xhtml" x="142" y="396" id="pf15368637596831" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15368637596832 pf15368637596833" path="/secured/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="secured/switch.xhtml" x="624" y="216" id="pf15368637596854" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15368637596855 pf15368637596856" inlinks="pf15368637596832 pf15368637596857 pf15368637596855" path="/secured/switch.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="secured/consultaLogReentry.xhtml" x="72" y="93" id="pf15368637596858" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" outlinks="pf15368637596857 pf15368637596859" inlinks="pf15368637596833 pf15368637596859 pf15368637596856" path="/secured/consultaLogReentry.xhtml"/>
+  <links id="pf15368637596832" target="pf15368637596854" source="pf15368637596831" outcome="switch"/>
+  <links id="pf15368637596833" target="pf15368637596858" source="pf15368637596831" outcome="logs"/>
+  <links id="pf15368637596857" target="pf15368637596854" source="pf15368637596858" outcome="switch"/>
+  <links id="pf15368637596856" target="pf15368637596858" source="pf15368637596854" outcome="logs"/>
+  <links id="pf15368637596859" target="pf15368637596858" source="pf15368637596858" outcome="logs">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf15368637596855" target="pf15368637596854" source="pf15368637596854" outcome="switch">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+</pageflow:Pageflow>

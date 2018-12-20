@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+</h:head>
+<h:body>
+	<h:form id="helloFormId">
+		<p:messages id="messages" showDetail="true" closable="true">
+			
+		</p:messages>
+		<h:panelGrid columns="1">
+			<f:facet name="header">
+                    Menú
+                </f:facet>
+			<p:menu>
+			<p:menuitem value="ON/OFF"  outcome="switch" rendered="#{sessionBean.isAutorized('2000')}"
+						update="messages" icon="ui-icon-disk" />
+			<p:menuitem value="LOGS REENTRY" outcome="logs" update="messages" icon="ui-icon-arrowrefresh-1-w" rendered="#{sessionBean.isAutorized('2001')}" />				
+			</p:menu>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

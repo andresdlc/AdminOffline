@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+</h:head>
+<h:body>
+	<h:form id="form1">
+		<p:messages id="messages" showDetail="true" closable="true">
+
+		</p:messages>
+		<!-- <h:panelGrid columns="1">
+			<f:facet name="header">
+                    Menú  
+                </f:facet>
+			<p:menu>
+				<p:menuitem value="ON/OFF" outcome="switch"
+					rendered="#{sessionBean.isAutorized('2000')}" update="messages"
+					icon="ui-icon-disk" />
+				<p:menuitem value="LOGS REENTRY" outcome="logs" update="messages"
+					icon="ui-icon-arrowrefresh-1-w"
+					rendered="#{sessionBean.isAutorized('2001')}" />
+			</p:menu>
+		</h:panelGrid>-->
+		<p:panelGrid columns="2" style="text-align:center;margin-left:30%">
+			<p:outputLabel>FECHA:</p:outputLabel>
+			<p:calendar id="fecha" value="#{logsBean.logReentryFilter.re_fecha}" />
+			<p:outputLabel>ESTADO:</p:outputLabel>
+			<p:selectOneListbox id="estado"
+				value="#{logsBean.logReentryFilter.re_estado}">
+				<f:selectItem itemLabel="OK" itemValue="0" />
+				<f:selectItem itemLabel="ERROR" itemValue="1" /> />  
+		  	</p:selectOneListbox>
+		</p:panelGrid>
+		<p:commandButton  value="Ingreso" update="tabla"
+			onclick="disable" style="margin-left:40%"></p:commandButton>
+		<p:dataTable var="log" value="#{logsBean.obtenerLogsReentry()}" id="tabla"
+			emptyMessage="No hay registros" style="margin-top:20px">
+
+			<f:facet name="header">
+
+			</f:facet>
+
+			<p:column headerText="Fecha">
+				<h:outputText value="#{log.re_fecha}" />
+			</p:column>
+			<p:column filterBy="#{log.re_canal}" headerText="Canal"
+				footerText="contains" filterMatchMode="contains">
+				<h:outputText value="#{log.re_canal}" />
+			</p:column>
+
+			<p:column headerText="Estado">
+				<h:outputText value="OK" rendered="#{log.re_estado=='0'}" />
+				<h:outputText value="ERROR" rendered="#{log.re_estado=='1'}" />
+			</p:column>
+
+			<p:column filterBy="#{log.re_codigo}" headerText="Código"
+				footerText="contains" filterMatchMode="contains">
+				<h:outputText value="#{log.re_codigo}" />
+			</p:column>
+
+			<p:column filterBy="#{log.re_mensaje}" headerText="Mensaje"
+				footerText="contains" filterMatchMode="contains">
+				<h:outputText value="#{log.re_mensaje}" />
+			</p:column>
+			<p:column style="width:32px;text-align: center" headerText="Request" >
+				<p:commandButton update="form1:requestDetail"
+					oncomplete="PF('requestDialog').show('#{component.clientId}')"
+					icon="ui-icon-search" title="View">
+					<f:setPropertyActionListener value="#{log}"
+						target="#{logsBean.logSelected}" />
+				</p:commandButton>
+			</p:column>
+			<p:column style="width:32px;text-align: center" headerText="Response">
+				<p:commandButton  update="form1:responseDetail"
+					oncomplete="PF('responseDialog').show('#{component.clientId}')"
+					icon="ui-icon-search" title="View">
+					<f:setPropertyActionListener value="#{log}"
+						target="#{logsBean.logSelected}" />
+				</p:commandButton>
+			</p:column>		
+		</p:dataTable>
+		
+    <p:dialog id="req" header="Request" widgetVar="requestDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" height="400" width="500">
+        <p:outputPanel id="requestDetail" style="text-align:center">
+            <p:panelGrid  columns="2" rendered="#{not empty logsBean.logSelected}" >               
+                <h:inputTextarea value="#{logsBean.logSelected.re_request}"  rows="400" cols="300" readonly="true"/>               
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+    
+     <p:dialog header="Response" widgetVar="responseDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" height="400" width="500">
+        <p:outputPanel id="responseDetail" style="text-align:center">
+               <p:panelGrid  columns="2" rendered="#{not empty logsBean.logSelected}" >                
+                <h:inputTextarea value="#{logsBean.logSelected.re_response}"  rows="400" cols="300" readonly="true" />
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>		
+	</h:form>
+</h:body>
+</html>

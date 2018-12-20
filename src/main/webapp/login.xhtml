@@ -1,0 +1,18 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" 	xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Offline Admin</title>
+</h:head>
+<h:body>
+    <h3>Offline Admin</h3>        
+    <h:form>  
+    <p:messages id="messages" showDetail="true" closable="true"/>
+    <p:panelGrid columns="2" style="text-align:center;margin-left:30%;border:0">     
+        <h:outputLabel value="Enter UserName:" />
+        <h:inputText value="${loginBean.usuario}" />
+        <h:outputLabel value="Enter Password:" />
+        <h:inputSecret value="${loginBean.password}" />
+   </p:panelGrid>
+   <p:commandButton action="${loginBean.doLogin()}" update="messages" value="Ingreso" onclick="disable"  style="margin-left:40%"></p:commandButton>
+    </h:form>
+</h:body>
+</html>

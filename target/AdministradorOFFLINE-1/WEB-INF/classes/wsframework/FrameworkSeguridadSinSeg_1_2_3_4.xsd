@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.bolivariano.com/FrameworkSeguridadTypes" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fws="http://www.bolivariano.com/FrameworkSeguridadTypes">
+  <xsd:element name="LoginAplicacion_in">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="LoginAplicacion_in" type="fws:LoginAplicacionType_in"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  
+  <xsd:element name="LoginAplicacion_out">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="LoginAplicacion_out" type="fws:LoginAplicacionType_out2"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+ 
+   
+  <xsd:complexType name="LoginAplicacionType_in">
+    <xsd:sequence>
+      <xsd:element name="IdAplicacion" type="xsd:string"/>
+      <xsd:element name="Usuario" type="xsd:string"/>
+      <xsd:element name="HorasExpiracion" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+ 
+  <xsd:complexType name="LoginAplicacionType_out2">
+    <xsd:sequence>
+      <xsd:element name="campo" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+              <xsd:attribute name="nombre" type="xsd:string"/>
+            </xsd:extension>
+          </xsd:simpleContent>
+        </xsd:complexType>
+      </xsd:element>
+      
+      <xsd:element name="nodo" minOccurs="0" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:complexContent>
+            <xsd:extension base="fws:LoginAplicacionType_out2">
+              <xsd:attribute name="nombre" type="xsd:string"/>
+            </xsd:extension>
+          </xsd:complexContent>
+        </xsd:complexType>
+      </xsd:element>
+      
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  </xsd:schema>
